@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<p:dataTable value="#{partidosBean.listaPartidos}" var="item" emptyMessage="No hay partidos para mostrar." reflow="true">
+		<p:column headerText="Fecha" sortBy="#{item.fecha}" filterBy="#{item.fecha}" filterMatchMode="contains">
+			<h:outputText value="#{item.fecha}" />
+		</p:column>
+ 
+	    <p:column headerText="Local" sortBy="#{item.equipoLocal}" filterBy="#{item.equipoLocal}" filterMatchMode="contains">
+	        <h:outputText value="#{item.equipoLocal}" />
+	    </p:column>
+	 
+	    <p:column headerText="Visitante" sortBy="#{item.equipoVisitante}" filterBy="#{item.equipoVisitante}" filterMatchMode="contains">
+	        <h:outputText value="#{item.equipoVisitante}" />
+	    </p:column>
+	 
+	    <p:column headerText="Marcador" sortBy="#{item.marcador}" filterBy="#{item.marcador}" filterMatchMode="contains">
+	        <h:outputText value="#{item.marcador}" />
+	    </p:column>
+	    
+	     <p:column headerText="Ver">
+	        <p:link outcome="alineaciones.xhtml?id=#{item.id}" target="_blank" >
+	        	<span class="fas fa-eye fa-2x" style="color: #cc0000;"></span>
+	        </p:link>
+	    </p:column>
+	</p:dataTable>
+	
+</ui:composition>

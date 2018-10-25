@@ -1,0 +1,10 @@
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<p:fileUpload auto="true" mode="advanced" fileUploadListener="#{fileBean.subirArchivo}" label="MLB" multiple="false" invalidFileMessage="Solo se permiten archivos de tipo txt" allowTypes="/(\.|\/)(txt)$/"></p:fileUpload>
+	
+	
+</ui:composition>

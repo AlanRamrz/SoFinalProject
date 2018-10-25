@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"></link>
+</h:head>
+ 
+<h:body>
+<h:form id="principalForm">
+	
+	<p:outputPanel rendered="#{alineacionesBean.existePartido}">
+	
+		<h1><h:outputText value="Equipo Local: #{alineacionesBean.equipoLocal}"></h:outputText></h1>
+		
+		<p:dataTable value="#{alineacionesBean.alineacionLocal}" var="item">
+		
+			<p:column headerText="Nombre">
+	        	<h:outputText value="#{item.nombre}" />
+	    	</p:column>
+	    	
+	    	<p:column headerText="Posicion">
+	        	<h:outputText value="#{item.posicion}" />
+	    	</p:column>
+	    	
+	    	<p:column headerText="Foto">
+	    		<p:commandLink actionListener="#{alineacionesBean.setUrlFoto(item.urlFoto)}" oncomplete="PF('popUp').show();" update=":principalForm:panelPopUp">
+	        		<span class="fas fa-camera-retro fa-2x" style="color: #cc0000;"></span>
+	        	</p:commandLink>
+	    	</p:column>
+		
+		</p:dataTable>
+		
+		<h1><h:outputText value="Equipo Visitante: #{alineacionesBean.equipoVisitante}"></h:outputText></h1>
+		
+		<p:dataTable value="#{alineacionesBean.alineacionVisitante}" var="item">
+		
+			<p:column headerText="Nombre">
+	        	<h:outputText value="#{item.nombre}" />
+	    	</p:column>
+	    	
+	    	<p:column headerText="Posicion">
+	        	<h:outputText value="#{item.posicion}" />
+	    	</p:column>
+	    	
+	    	<p:column headerText="Foto">
+	    		<p:commandLink actionListener="#{alineacionesBean.setUrlFoto(item.urlFoto)}" oncomplete="PF('popUp').show();" update=":principalForm:panelPopUp">
+	        		<span class="fas fa-camera-retro fa-2x" style="color: #cc0000;"></span>
+	        	</p:commandLink>
+	    	</p:column>
+	    	
+		</p:dataTable>
+		
+	</p:outputPanel>
+	
+	<p:outputPanel rendered="#{not alineacionesBean.existePartido}">
+		<h1><h:outputText value="Este partido no existe."></h:outputText></h1>
+	</p:outputPanel>
+	
+	<p:outputPanel id="panelPopUp">
+		<p:dialog header="Foto" widgetVar="popUp" modal="true" width="250" height="350">
+    		<img src="#{alineacionesBean.urlFoto}"></img>
+		</p:dialog>
+	</p:outputPanel>
+	
+	
+</h:form>
+</h:body>
+
+</html>
